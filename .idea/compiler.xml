@@ -3,9 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="Simple-Game-Server-Management-Tool.Simple-Game-Server-Management-Tool.main" target="25" />
-      <module name="Simple-Game-Server-Management-Tool.Simple-Game-Server-Management-Tool.main~1" target="25" />
       <module name="Simple-Game-Server-Management-Tool.Simple-Game-Server-Management-Tool.test" target="25" />
-      <module name="Simple-Game-Server-Management-Tool.Simple-Game-Server-Management-Tool.test~1" target="25" />
     </bytecodeTargetLevel>
   </component>
 </project>
