@@ -28,7 +28,14 @@ This project should have the following components"
 
 
 # Requirement for you pc:
-1. curl 
-~~2. postfix (https://www.youtube.com/watch?v=uNss377DK88)
-3. create /etc/postfix/sasl/sasl_passwd~~
-2. 
+1. curl
+
+
+
+# Starting Logic 
+1. When the application starts. It should use some way to tell client the IP address of this server. 
+   - email? 
+   - discord?
+   - telegram?
+
+
