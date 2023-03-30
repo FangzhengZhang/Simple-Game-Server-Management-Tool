@@ -64,7 +64,7 @@ public class ConfigService {
             if(!java.nio.file.Files.exists(java.nio.file.Paths.get(path))){
                 try {
                     logger.info("Creating path: " + path);
-                    java.nio.file.Files.createDirectories(java.nio.file.Paths.get(path));
+                    //java.nio.file.Files.createDirectories(java.nio.file.Paths.get(path));
                 } catch (Exception e) {
                     logger.error("Error creating path: " + path);
                     e.printStackTrace();

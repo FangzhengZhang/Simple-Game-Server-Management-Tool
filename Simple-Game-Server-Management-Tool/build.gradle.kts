@@ -33,6 +33,6 @@ dependencies {
 	implementation("org.apache.logging.log4j:log4j-core:2.16.0")
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+// tasks.withType<Test> {
+// 	useJUnitPlatform()
+// }
