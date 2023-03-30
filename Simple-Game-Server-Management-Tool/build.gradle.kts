@@ -1,3 +1,15 @@
+
+import org.gradle.api.tasks.Copy
+
+tasks.register<Copy>("copyScripts") {
+    from("../scripts")
+    into("build/scripts")
+}
+
+tasks.named("bootJar") {
+    dependsOn("copyScripts")
+}
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.0.4"
@@ -18,6 +30,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-cache")
 	implementation ("mysql:mysql-connector-java:8.0.32")
+	implementation("org.apache.logging.log4j:log4j-core:2.16.0")
 }
 
 tasks.withType<Test> {
