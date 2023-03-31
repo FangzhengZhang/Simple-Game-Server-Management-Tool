@@ -9,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Configuration;
 
 import cat.frank.SimpleGameServerManagementTool.serverIp.IPService;
@@ -21,9 +19,6 @@ public class ConfigService {
 
     @Autowired
     ApplicationShutdownManager shutdownManager = new ApplicationShutdownManager();
-
-    @Autowired
-    private CacheManager cacheManager;
 
     @Autowired
     IPService ipService = new IPService();
@@ -57,12 +52,7 @@ public class ConfigService {
         logger.info("infoFilePath: " + infoFilePath);
 
         checkIfPathExists();
-
-        Cache cache = cacheManager.getCache("PathCache");
-        cache.put("sgsmt.root.path", appRootPath);
-        cache.put("sgsmt.scripts.path", scriptsPath);
-        cache.put("sgsmt.info.file.path", infoFilePath);
-
+        
         checkIfIpChanged();
         
     }
