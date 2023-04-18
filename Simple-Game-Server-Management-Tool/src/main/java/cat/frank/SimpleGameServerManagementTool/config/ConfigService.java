@@ -11,22 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
-import cat.frank.SimpleGameServerManagementTool.serverIp.IPService;
 import cat.frank.SimpleGameServerManagementTool.utility.ApplicationShutdownManager;
 
 @Configuration
 public class ConfigService {
-
-    @Autowired
-    ApplicationShutdownManager shutdownManager = new ApplicationShutdownManager();
-
-    @Autowired
-    IPService ipService = new IPService();
-
     //add logger
     private static final Logger logger = LoggerFactory.getLogger(ConfigService.class);
 
-    @Value("${sgsmt.root.path:../}")
+    // get the value from the application.properties file
+    @Value("${sgsmt.root.path:}")
     private String appRootPath;
 
     @Value("${sgsmt.scripts.path:scripts}")
@@ -35,13 +28,25 @@ public class ConfigService {
     @Value("${sgsmt.info.file.path:informationFile}")
     private String infoFilePath;
 
+    private ApplicationShutdownManager shutdownManager = null;
+    private IPService ipService = null;
+    private ImportantDataService importantDataService = null;
+    // create a function for authored code to be called from the constructor
+    @Autowired
+    public void setShutdownManager(ApplicationShutdownManager shutdownManager,
+                                   IPService ipService,
+                                   ImportantDataService importantDataService) {
+        this.shutdownManager = shutdownManager;
+        this.ipService = ipService;
+        this.importantDataService = importantDataService;
+    }
 
     @PostConstruct
     public void initChecker(){
 
         if(appRootPath == null || appRootPath.isEmpty() ||appRootPath.equals("/")){
             logger.error("sgsmt.root.path is null or empty. Please start the application with StartInit.sh or set the Application Home.");
-            // Shut down the spring appliction
+            // Shut down the spring application
             shutdownManager.initiateShutdown(1);
         }
         scriptsPath = appRootPath + scriptsPath;
@@ -51,10 +56,9 @@ public class ConfigService {
         logger.info("scriptsPath: " + scriptsPath);
         logger.info("infoFilePath: " + infoFilePath);
 
-        checkIfPathExists();
-        
+        checkIfPathExistsAndSaveThem();
         checkIfIpChanged();
-        
+
     }
 
     private void checkIfIpChanged() {
@@ -64,8 +68,8 @@ public class ConfigService {
     /**
      * This function checks if the path exists and if not, if it is not exist, then it will create it.
      */
-    private void checkIfPathExists() {
-        
+    private void checkIfPathExistsAndSaveThem() {
+
         if(!java.nio.file.Files.exists(java.nio.file.Paths.get(scriptsPath))){
             logger.error("Scripts path does not exist. Please check the completeness of the application.");
             shutdownManager.initiateShutdown(1);
@@ -84,8 +88,8 @@ public class ConfigService {
                 }
             }
         }
+
+        importantDataService.saveImportantData(
+                new ImportantDataModel(appRootPath, scriptsPath, infoFilePath, null));
     }
-
-    
-
 }

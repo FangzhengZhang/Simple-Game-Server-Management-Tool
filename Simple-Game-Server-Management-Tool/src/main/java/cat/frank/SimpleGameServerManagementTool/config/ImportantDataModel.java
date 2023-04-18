@@ -1,45 +1,35 @@
 package cat.frank.SimpleGameServerManagementTool.config;
 
-import org.springframework.cache.annotation.EnableCaching;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import static cat.frank.SimpleGameServerManagementTool.utility.StaticVariables.Important_Data_Model_Table_Name;
 
-@EnableCaching
 @Entity
-@Table(name = "config_data")
+@Table(name = Important_Data_Model_Table_Name)
 public class ImportantDataModel {
-        @Id
-        @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-        private Long id;
-        private String appRootPath;
-        private String scriptsPath;
-        private String infoFilePath;
-        private String serverIp;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String appRootPath;
+    private String scriptsPath;
+    private String infoFilePath;
+    private String serverIp;
     
-        // constructors
-        public ImportantDataModel() {
-        }
+    // constructors
+    public ImportantDataModel() {
+    }
 
-        public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath, String serverIp) {
-            this.appRootPath = appRootPath;
-            this.scriptsPath = scriptsPath;
-            this.infoFilePath = infoFilePath;
-            this.serverIp = serverIp;
-        }
-
-        // getters and setters
-
-    public ImportantDataModel(Long id, String appRootPath, String scriptsPath, String infoFilePath, String serverIp) {
-        this.id = id;
+    public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath, String serverIp) {
         this.appRootPath = appRootPath;
         this.scriptsPath = scriptsPath;
         this.infoFilePath = infoFilePath;
         this.serverIp = serverIp;
     }
 
+
+
+    // getters and setters
     public Long getId() {
         return this.id;
     }
@@ -79,31 +69,6 @@ public class ImportantDataModel {
 
     public void setServerIp(String serverIp) {
         this.serverIp = serverIp;
-    }
-
-    public ImportantDataModel id(Long id) {
-        setId(id);
-        return this;
-    }
-
-    public ImportantDataModel appRootPath(String appRootPath) {
-        setAppRootPath(appRootPath);
-        return this;
-    }
-
-    public ImportantDataModel scriptsPath(String scriptsPath) {
-        setScriptsPath(scriptsPath);
-        return this;
-    }
-
-    public ImportantDataModel infoFilePath(String infoFilePath) {
-        setInfoFilePath(infoFilePath);
-        return this;
-    }
-
-    public ImportantDataModel serverIp(String serverIp) {
-        setServerIp(serverIp);
-        return this;
     }
 
     @Override

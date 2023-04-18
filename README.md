@@ -29,6 +29,7 @@ This project should have the following components"
 
 # Requirement for you pc:
 1. curl
+2. MySQL server 
 
 
 

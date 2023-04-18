@@ -6,8 +6,13 @@ import org.springframework.boot.SpringApplication;
 
 @Component
 public class ApplicationShutdownManager {
-    @Autowired
     private ApplicationContext appContext;
+
+    @Autowired
+    public ApplicationShutdownManager(ApplicationContext appContext){
+        this.appContext = appContext;
+    }
+
 
     /*
      * Invoke with `0` to indicate no error or different code to indicate
