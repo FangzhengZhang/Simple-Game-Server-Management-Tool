@@ -3,8 +3,10 @@ package cat.frank.SimpleGameServerManagementTool.config;
 
 import jakarta.annotation.PostConstruct;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
-
+import java.nio.file.Paths;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,13 @@ public class ConfigService {
 
     @Value("${sgsmt.info.file.path:informationFile}")
     private String infoFilePath;
+
+    @Value("${sgsmt.email.receiver:null}")
+    private String emailReceiver;
+
+    @Value("${sgsmt.email.enabled:false}")
+    private boolean isEmailEnabled;
+
 
     private ApplicationShutdownManager shutdownManager = null;
     private IPService ipService = null;
@@ -70,7 +79,7 @@ public class ConfigService {
      */
     private void checkIfPathExistsAndSaveThem() {
 
-        if(!java.nio.file.Files.exists(java.nio.file.Paths.get(scriptsPath))){
+        if(!Files.exists(Paths.get(scriptsPath))){
             logger.error("Scripts path does not exist. Please check the completeness of the application.");
             shutdownManager.initiateShutdown(1);
         }
@@ -78,10 +87,11 @@ public class ConfigService {
         paths.add(infoFilePath);
 
         for(String path : paths){
-            if(!java.nio.file.Files.exists(java.nio.file.Paths.get(path))){
+            Path path1 = Paths.get(path);
+            if(!Files.exists(path1)){
                 try {
                     logger.info("Creating path: " + path);
-                    java.nio.file.Files.createDirectories(java.nio.file.Paths.get(path));
+                    Files.createDirectories(path1);
                 } catch (Exception e) {
                     logger.error("Error creating path: " + path);
                     e.printStackTrace();
@@ -90,6 +100,7 @@ public class ConfigService {
         }
 
         importantDataService.saveImportantData(
-                new ImportantDataModel(appRootPath, scriptsPath, infoFilePath, null));
+                new ImportantDataModel(appRootPath, scriptsPath, infoFilePath,emailReceiver,
+                        isEmailEnabled,null));
     }
 }

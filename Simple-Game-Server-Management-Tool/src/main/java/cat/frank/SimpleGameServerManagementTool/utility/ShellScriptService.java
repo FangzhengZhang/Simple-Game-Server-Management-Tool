@@ -16,11 +16,13 @@ public class ShellScriptService {
     public static String runShellScript(String scriptPath) {
         logger.info("Running script: " + scriptPath);
         StringBuilder output = null;
+        BufferedReader reader = null;
+        ProcessBuilder pb = null;
+        Process process = null;
         try {
-            ProcessBuilder pb = new ProcessBuilder(scriptPath);
-            Process process = pb.start();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            pb = new ProcessBuilder(scriptPath);
+            process = pb.start();
+            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             output = new StringBuilder();
 
@@ -35,6 +37,25 @@ public class ShellScriptService {
         } catch (Exception e) {
             logger.error("Error while executing script: " + e.getMessage());
             e.printStackTrace();
+        }finally {
+            // close the reader
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                    logger.error("Error while closing reader: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            // destroy the process
+            if (process != null) {
+                try {
+                    process.destroy();
+                } catch (Exception e) {
+                    logger.error("Error while destroying process: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
         }
         return output == null ? null : output.toString();
     }

@@ -15,16 +15,21 @@ public class ImportantDataModel {
     private String scriptsPath;
     private String infoFilePath;
     private String serverIp;
+    private Boolean isEmailEnabled;
+    private String emailReceiver;
     
     // constructors
     public ImportantDataModel() {
     }
 
-    public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath, String serverIp) {
+    public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath,
+                              String emailReceiver, Boolean isEmailEnabled, String serverIp) {
         this.appRootPath = appRootPath;
         this.scriptsPath = scriptsPath;
         this.infoFilePath = infoFilePath;
         this.serverIp = serverIp;
+        this.emailReceiver = emailReceiver;
+        this.isEmailEnabled = isEmailEnabled;
     }
 
 
@@ -71,17 +76,31 @@ public class ImportantDataModel {
         this.serverIp = serverIp;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", appRootPath='" + getAppRootPath() + "'" +
-            ", scriptsPath='" + getScriptsPath() + "'" +
-            ", infoFilePath='" + getInfoFilePath() + "'" +
-            ", serverIp='" + getServerIp() + "'" +
-            "}";
+    public String getEmailReceiver() {
+        return this.emailReceiver;
+    }
+    public void setEmailReceiver(String emailReceiver) {
+        this.emailReceiver = emailReceiver;
     }
 
+    public Boolean getEmailEnabled() {
+        return isEmailEnabled;
+    }
 
+    public void setEmailEnabled(Boolean emailEnabled) {
+        isEmailEnabled = emailEnabled;
+    }
 
+    @Override
+    public String toString() {
+        return "ImportantDataModel{" +
+                "id=" + id +
+                ", appRootPath='" + appRootPath + '\'' +
+                ", scriptsPath='" + scriptsPath + '\'' +
+                ", infoFilePath='" + infoFilePath + '\'' +
+                ", serverIp='" + serverIp + '\'' +
+                ", isEmailEnabled=" + isEmailEnabled +
+                ", emailReceiver='" + emailReceiver + '\'' +
+                '}';
+    }
 }

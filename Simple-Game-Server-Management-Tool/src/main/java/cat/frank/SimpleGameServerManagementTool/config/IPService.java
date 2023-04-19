@@ -38,9 +38,11 @@ public class IPService {
             logger.warn("ip changed from {} to {}", currentImportantData.getServerIp(), ip);
             currentImportantData.setServerIp(ip);
             importantDataService.saveImportantData(currentImportantData);
-            emailService.sendEmail("TODO:",
-                    StaticVariables.IP_Change_Email_Subject,
-                    "Server IP changed to: " + ip);
+            if(currentImportantData.getEmailEnabled()){
+                emailService.sendEmail(currentImportantData.getEmailReceiver(),
+                        StaticVariables.IP_Change_Email_Subject,
+                        "Server IP changed to: " + ip);
+            }
         }
     }
 }
