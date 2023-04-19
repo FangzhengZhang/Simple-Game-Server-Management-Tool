@@ -36,6 +36,8 @@ public class ConfigService {
     @Value("${sgsmt.email.enabled:false}")
     private boolean isEmailEnabled;
 
+    @Value("${spring.mail.username:null}")
+    private String emailSender;
 
     private ApplicationShutdownManager shutdownManager = null;
     private IPService ipService = null;
@@ -101,6 +103,6 @@ public class ConfigService {
 
         importantDataService.saveImportantData(
                 new ImportantDataModel(appRootPath, scriptsPath, infoFilePath,emailReceiver,
-                        isEmailEnabled,null));
+                        isEmailEnabled,null, emailSender));
     }
 }

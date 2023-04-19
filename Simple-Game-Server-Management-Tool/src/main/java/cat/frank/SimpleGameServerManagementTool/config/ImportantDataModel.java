@@ -17,19 +17,23 @@ public class ImportantDataModel {
     private String serverIp;
     private Boolean isEmailEnabled;
     private String emailReceiver;
-    
+    private String emailSender;
+
+
     // constructors
     public ImportantDataModel() {
     }
 
     public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath,
-                              String emailReceiver, Boolean isEmailEnabled, String serverIp) {
+                              String emailReceiver, Boolean isEmailEnabled, String serverIp,
+                              String emailSender) {
         this.appRootPath = appRootPath;
         this.scriptsPath = scriptsPath;
         this.infoFilePath = infoFilePath;
         this.serverIp = serverIp;
         this.emailReceiver = emailReceiver;
         this.isEmailEnabled = isEmailEnabled;
+        this.emailSender = emailSender;
     }
 
 
@@ -91,6 +95,14 @@ public class ImportantDataModel {
         isEmailEnabled = emailEnabled;
     }
 
+    public String getEmailSender() {
+        return emailSender;
+    }
+
+    public void setEmailSender(String emailSender) {
+        this.emailSender = emailSender;
+    }
+
     @Override
     public String toString() {
         return "ImportantDataModel{" +
@@ -101,6 +113,7 @@ public class ImportantDataModel {
                 ", serverIp='" + serverIp + '\'' +
                 ", isEmailEnabled=" + isEmailEnabled +
                 ", emailReceiver='" + emailReceiver + '\'' +
+                ", emailSender='" + emailSender + '\'' +
                 '}';
     }
 }

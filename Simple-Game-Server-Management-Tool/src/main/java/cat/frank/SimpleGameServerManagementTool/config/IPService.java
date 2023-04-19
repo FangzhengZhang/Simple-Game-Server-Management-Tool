@@ -39,7 +39,8 @@ public class IPService {
             currentImportantData.setServerIp(ip);
             importantDataService.saveImportantData(currentImportantData);
             if(currentImportantData.getEmailEnabled()){
-                emailService.sendEmail(currentImportantData.getEmailReceiver(),
+                emailService.sendEmail(currentImportantData.getEmailSender(),
+                        currentImportantData.getEmailReceiver(),
                         StaticVariables.IP_Change_Email_Subject,
                         "Server IP changed to: " + ip);
             }
