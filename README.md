@@ -24,13 +24,15 @@ This project should have the following components"
        - Server stop command (default with kill -9).
        - Server update command for servers that do not need to upload update file by user.
        
-2. The back end should support the front-end's requirement, and save those event logs into a database. 
-
+2. The back end should support the front-end's requirement, and save those event logs into a database.
 
 # Requirement for you pc:
 1. curl
 2. MySQL server 
 
+# How to run this application:
+1. You need to give the right application path in the application.properties file. (I may write a script to do this in the future)
+2. If you want to use the email function, you need to give the right email address and password in the application.properties file.
 
 
 # Starting Logic 
