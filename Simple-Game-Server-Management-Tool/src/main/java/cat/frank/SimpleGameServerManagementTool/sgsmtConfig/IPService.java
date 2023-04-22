@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.config;
+package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
 
 import cat.frank.SimpleGameServerManagementTool.utility.EmailService;
 import cat.frank.SimpleGameServerManagementTool.utility.ShellScriptService;

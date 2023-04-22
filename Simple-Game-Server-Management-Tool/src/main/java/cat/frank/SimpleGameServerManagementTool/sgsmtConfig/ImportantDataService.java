@@ -2,7 +2,7 @@
  * This is the service class for the important data.
  */
 
-package cat.frank.SimpleGameServerManagementTool.config;
+package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;

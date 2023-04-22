@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.config;
+package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
