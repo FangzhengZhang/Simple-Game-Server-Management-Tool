@@ -43,7 +43,7 @@ then
   echo "Setup log rotation for SGSMT"
   echo "/tmp/SGSMT.log {
   rotate 5
-  daily
+  weekly
   missingok
   notifempty
   compress
