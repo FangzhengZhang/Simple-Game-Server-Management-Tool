@@ -29,6 +29,7 @@ This project should have the following components"
 # Requirement for you pc:
 1. curl
 2. MySQL server 
+3. Java 17
 
 # How to run this application:
 1. You need to give the right application path in the application.properties file. (I may write a script to do this in the future)
