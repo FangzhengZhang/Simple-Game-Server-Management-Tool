@@ -37,6 +37,24 @@ then
   exit 0
 fi
 
+# Setup a log rotation for the log file if it is not set up
+if [ ! -e "/etc/logrotate.d/SGSMT" ]
+then
+  echo "Setup log rotation for SGSMT"
+  echo "/tmp/SGSMT.log {
+  rotate 5
+  daily
+  missingok
+  notifempty
+  compress
+  delaycompress
+  copytruncate
+}" > /etc/logrotate.d/SGSMT
+fi
+
+# Before start the application, make all scripts file in the scripts folder executable
+chmod +x $SGSMT_Home/scripts/*.sh
+
 # use shell script to setup a cron job to run the script every 5 minutes
 # to start the app if it is not running
 (crontab -l ; echo "*/5 * * * * $ScriptFolderPath/StartSGSMT.sh") | crontab -
@@ -47,4 +65,4 @@ applicationPropertiesFile="$SGSMT_Home/application.properties"
 echo "applicationPropertiesFile is $applicationPropertiesFile"
 
 # Start the Springboot app with the jar file and the application.properties file.
-java -jar $jarFile --spring.config.location="$applicationPropertiesFile"
+java -jar $jarFile --spring.config.location="$applicationPropertiesFile" > /tmp/SGSMT.log 2>&1 &

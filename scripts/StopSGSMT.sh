@@ -18,3 +18,12 @@ then
 else
   echo "The app is not running"
 fi
+
+# Remove the log rotation setup for SGSMT log file
+if [ -e "/etc/logrotate.d/SGSMT" ]
+then
+  echo "Remove the log rotation setup for SGSMT log file"
+  rm /etc/logrotate.d/SGSMT
+else
+  echo "No log rotation setup for SGSMT log file"
+fi
