@@ -9,4 +9,8 @@ public class StaticVariables {
 
     //Data table names
     public static final String Important_Data_Model_Table_Name = "config_data";
+
+    // Job related variables
+    public static final String IP_Check_Job_Name_Key = "IP_Check_Job_Name";
+    public static final String IP_Check_Job_ID_Key = "IP_Check_Job_ID_Key";
 }

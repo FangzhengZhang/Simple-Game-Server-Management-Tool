@@ -35,7 +35,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.apache.logging.log4j:log4j-core:2.20.0")
 	implementation ("org.springframework.boot:spring-boot-starter-mail")
-	implementation ("org.springframework.boot:spring-boot-starter-batch")
+	implementation ("org.quartz-scheduler:quartz")
 }
 
 // tasks.withType<Test> {

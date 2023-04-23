@@ -1,5 +1,7 @@
-package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
+package cat.frank.SimpleGameServerManagementTool.ipCheck;
 
+import cat.frank.SimpleGameServerManagementTool.sgsmtConfig.ImportantDataModel;
+import cat.frank.SimpleGameServerManagementTool.sgsmtConfig.ImportantDataService;
 import cat.frank.SimpleGameServerManagementTool.utility.EmailService;
 import cat.frank.SimpleGameServerManagementTool.utility.ShellScriptService;
 import cat.frank.SimpleGameServerManagementTool.utility.StaticVariables;

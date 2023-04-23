@@ -1,6 +1,7 @@
 package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
 
 
+import cat.frank.SimpleGameServerManagementTool.ipCheck.IPService;
 import jakarta.annotation.PostConstruct;
 
 import java.nio.file.Files;
