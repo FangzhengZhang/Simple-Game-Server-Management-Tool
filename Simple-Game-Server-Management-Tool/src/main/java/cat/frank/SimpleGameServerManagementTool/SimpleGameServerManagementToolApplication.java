@@ -14,8 +14,4 @@ public class SimpleGameServerManagementToolApplication {
 		SpringApplication.run(SimpleGameServerManagementToolApplication.class, args);
 	}
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void startJobs() {
-		//System.out.println("hello world, I have just started up");
-	}
 }
