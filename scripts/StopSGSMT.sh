@@ -9,15 +9,15 @@ else
   echo "No cron job running"
 fi
 
-# Stop the app if it is running by check the process name
-# and kill the process
-if [ "$(ps -ef | grep 'java -jar SGSMT-*.jar' | grep -v grep)" ]
+# Use PID in the informationFile/SGSMT.pid to stop the app
+if [ -e "$InfoFileFolderPath/SGSMT.pid" ]
 then
-  echo "The app is running, stop it"
-  ps -ef | grep 'java -jar SGSMT-*.jar' | grep -v grep | awk '{print $2}' | xargs kill -9
+  echo "Stop the app with PID in the informationFile/SGSMT.pid"
+  kill -9 $(cat "$InfoFileFolderPath/SGSMT.pid")
 else
-  echo "The app is not running"
+  echo "No SGSMT PID file found"
 fi
+
 
 # Remove the log rotation setup for SGSMT log file
 if [ -e "/etc/logrotate.d/SGSMT" ]

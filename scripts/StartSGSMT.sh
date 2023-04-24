@@ -64,5 +64,16 @@ applicationPropertiesFile="$SGSMT_Home/application.properties"
 
 echo "applicationPropertiesFile is $applicationPropertiesFile"
 
-# Start the Springboot app with the jar file and the application.properties file.
-java -jar $jarFile --spring.config.location="$applicationPropertiesFile" > /tmp/SGSMT.log 2>&1 &
+# if the PID file exists, remove it
+if [ -e "$InfoFileFolderPath/SGSMT.pid" ]
+then
+  echo "Remove the PID file"
+  rm "$InfoFileFolderPath/SGSMT.pid"
+fi
+
+# make a new pid file in the target folder
+touch "$InfoFileFolderPath/SGSMT.pid"
+
+# Start the jar application with nohup and the application.properties file, get the return PID and write it to the info file
+#nohup java -jar $jarFile --spring.config.location="$applicationPropertiesFile" > /tmp/SGSMT.log 2>&1 &
+#echo $! > "$InfoFileFolderPath/SGSMT.pid"
