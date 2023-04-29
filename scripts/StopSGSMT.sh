@@ -58,6 +58,18 @@ RemoveLogRotationWhenSudo() {
   fi
 }
 
-source ./StartInit.sh
+# if user give a input path as a parameter, use that path as the SGSMT_Home, else run the StartInit.sh
+if [ "$1" ]
+then
+  export SGSMT_Home="$1"
+  export ScriptFolderPath="$SGSMT_Home/scripts"
+  export InfoFileFolderPath="$SGSMT_Home/informationFile"
+else
+  # Setup file paths
+  export SGSMT_Home="$(pwd)/../"
+  export ScriptFolderPath="$SGSMT_Home/scripts"
+  export InfoFileFolderPath="$SGSMT_Home/informationFile"
+fi
+
 StopCronJob
 StopApplication

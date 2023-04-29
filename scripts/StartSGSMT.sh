@@ -83,8 +83,8 @@ SetupCronJob() {
     echo "The cron job StartSGSMT is already set up"
   else
     echo "Setup the cron job StartSGSMT"
-    #  evey 30th minute
-    (crontab -l ; echo "*/30 * * * * $ScriptFolderPath/StartSGSMT.sh") | crontab -
+    # set up crontab for evey 30th minute and print the log to the log file
+    (crontab -l ; echo "*/30 * * * * $SGSMT_Home/scripts/StartSGSMT.sh $SGSMT_Home>> /tmp/SGSMT_Start.log 2>&1") | crontab -
   fi
 }
 
@@ -96,8 +96,32 @@ StartApplication() {
   echo $! > "$InfoFileFolderPath/SGSMT.pid"
 }
 
+DebugPrintToFile(){
+  #Print time to the log file
+  echo "The time is $(date)" > /tmp/SGSMT_debug.log
+  echo "SGSMT_Home is $SGSMT_Home" >> /tmp/SGSMT_debug.log
+  echo "InfoFileFolderPath is $InfoFileFolderPath" >> /tmp/SGSMT_debug.log
+  echo "jarFile is $jarFile" >> /tmp/SGSMT_debug.log
+  echo "applicationPropertiesFile is $applicationPropertiesFile" >> /tmp/SGSMT_debug.log
+  echo "ScriptFolderPath is $ScriptFolderPath" >> /tmp/SGSMT_debug.log
+}
 
-source ./StartInit.sh
+# Main
+
+# if user give a input path as a parameter, use that path as the SGSMT_Home, else run the StartInit.sh
+if [ "$1" ]
+then
+  export SGSMT_Home="$1"
+  export ScriptFolderPath="$SGSMT_Home/scripts"
+  export InfoFileFolderPath="$SGSMT_Home/informationFile"
+else
+  # Setup file paths
+  export SGSMT_Home="$(pwd)/../"
+  export ScriptFolderPath="$SGSMT_Home/scripts"
+  export InfoFileFolderPath="$SGSMT_Home/informationFile"
+fi
+
+
 findTheJarFilePath
 StartingCheck
 CreateImportantFolderIfNotExist
@@ -107,5 +131,6 @@ SetupApplicationPropertiesFile
 SetupInfoFile
 SetupCronJob
 StartApplication
+
 
 # End of the StartSGSMT.sh
