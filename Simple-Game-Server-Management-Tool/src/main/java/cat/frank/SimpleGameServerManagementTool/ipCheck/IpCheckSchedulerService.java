@@ -39,7 +39,7 @@ public class IpCheckSchedulerService {
         JobDetail job = JobBuilder.newJob(IpCheckJob.class).withIdentity(jobKey).build();
         JobDataMap jobDataMap = job.getJobDataMap();
         jobDataMap.put(IP_Check_Job_Name_Key, jobName);
-        jobDataMap.putAsString(IP_Check_Job_ID_Key, jobID);
+        jobDataMap.put(IP_Check_Job_ID_Key, jobID);
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("IP_Check_Trigger", "IP_Check_Trigger_Group")
                 .withSchedule(SimpleScheduleBuilder.simpleSchedule()
@@ -93,6 +93,32 @@ public class IpCheckSchedulerService {
         // interrupt the job
         JobKey jobKey = new JobKey(jobName, jobGroupName);
         scheduler.interrupt(jobKey);
+        IpCheckJobModel ipCheckJobModel = ipCheckJobService
+                .getIpCheckJobModelByJobNameAndGroup(jobName, jobGroupName);
+        ipCheckJobModel.setRunning(false);
+        ipCheckJobService.updateIpCheckJobModel(ipCheckJobModel);
+    }
+
+    // pause the job
+    public void pauseJob() throws SchedulerException {
+        // pause the job
+        JobKey jobKey = new JobKey(jobName, jobGroupName);
+        scheduler.pauseJob(jobKey);
+        IpCheckJobModel ipCheckJobModel = ipCheckJobService
+                .getIpCheckJobModelByJobNameAndGroup(jobName, jobGroupName);
+        ipCheckJobModel.setRunning(false);
+        ipCheckJobService.updateIpCheckJobModel(ipCheckJobModel);
+    }
+
+    // resume the job
+    public void resumeJob() throws SchedulerException {
+        // resume the job
+        JobKey jobKey = new JobKey(jobName, jobGroupName);
+        scheduler.resumeJob(jobKey);
+        IpCheckJobModel ipCheckJobModel = ipCheckJobService
+                .getIpCheckJobModelByJobNameAndGroup(jobName, jobGroupName);
+        ipCheckJobModel.setRunning(true);
+        ipCheckJobService.updateIpCheckJobModel(ipCheckJobModel);
     }
 
     /*

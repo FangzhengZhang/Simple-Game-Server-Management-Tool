@@ -90,7 +90,7 @@ SetupCronJob() {
   else
     echo "Setup the cron job StartSGSMT"
     # set up crontab for evey 30th minute and print the log to the log file
-    (crontab -l ; echo "*/30 * * * * $SGSMT_Home/scripts/StartSGSMT.sh $SGSMT_Home>> /tmp/SGSMT_Start.log 2>&1") | crontab -
+    (crontab -l ; echo "*/30 * * * * $SGSMT_Home/scripts/StartSGSMT.sh $SGSMT_Home>> $SGSMT_Home/logs/SGSMT_Start.log 2>&1") | crontab -
   fi
 }
 
@@ -98,7 +98,7 @@ StartApplication() {
   # Start the jar application with nohup and the application.properties file, get the return PID and write it to the info file
   echo "Start the application $jarFile..."
   echo "$jarFile" > "$InfoFileFolderPath/SGSMTJarName.txt"
-  nohup java -jar $jarFile --spring.config.location="$applicationPropertiesFile" > /tmp/SGSMT.log 2>&1 &
+  nohup java -jar $jarFile --spring.config.location="$applicationPropertiesFile" > "$SGSMT_Home"/logs/SGSMT.log 2>&1 &
   echo $! > "$InfoFileFolderPath/SGSMT.pid"
 }
 

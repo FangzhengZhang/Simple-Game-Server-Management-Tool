@@ -2,3 +2,5 @@
 /informationFile/IpInfo.txt
 /.idea/
 /.idea/*
+/logs/
+/logs/*

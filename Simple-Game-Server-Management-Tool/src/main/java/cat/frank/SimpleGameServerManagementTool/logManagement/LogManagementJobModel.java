@@ -33,6 +33,16 @@ public class LogManagementJobModel {
         this.startTime = startTime;
     }
 
+    public LogManagementJobModel(String jobName, String jobGroup, Long jobID, Long repeatIntervalHour) {
+        this.jobName = jobName;
+        this.jobID = jobID;
+        this.jobGroup = jobGroup;
+        this.isRunning = false;
+        this.previousFireTime = null;
+        this.repeatIntervalHour = repeatIntervalHour;
+        this.createTime = new Date();
+    }
+
     public LogManagementJobModel() {
 
     }
