@@ -4,7 +4,7 @@ I want to build an MC and CoreKeeper game sever management tool, so I can back u
 # There are few goals I want to achieve:
 - This application will send me the server IP address when it starts and when it changes. (done 0.1)
 - This application will automatically restart the server when it crashes by use a corn job. (done 0.2)
-- This application will print the server log into a file and rotate it every day if the file size is too big. (ongoing)
+- This application will print the server log into a file and rotate it every day if the file size is too big. (testing 0.3)
 - This application will check the server hardware usage and display in UI. (ongoing)
 - This application will display current Job status in UI, and allows user to stop, start or update them. (ongoing)
 - I can set up the backup time and location of the game save file.
@@ -43,6 +43,7 @@ This project should have the following components"
 4. Make sure the MySQL is running. If you are not use the default port, you need to change the port in the application.properties file.
 5. Start the application by run the StartSGSMT.sh file (sudo not required). This will set up corn job to run the application every 30 minutes.
 6. Stop the application by run the StopSGSMT.sh file. This will remove the corn job.
+7. You can set the configuration for log rotate in the application.properties file or make changes on UI (plan done it on v-0.5). 
 
 
 # Starting Logic 
@@ -51,5 +52,6 @@ This project should have the following components"
 3. It will print the server log into /tmp folder.
 4. It will check the server IP every hour.
 5. It will rotate the server log every day if its size is too big.
+6. It will check the server hardware usage and display in UI. 
 
 

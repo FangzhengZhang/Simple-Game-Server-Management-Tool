@@ -88,6 +88,4 @@ public class LogManagementJob implements Job {
             }
         }
     }
-
-
 }
