@@ -14,6 +14,7 @@ public class ImportantDataModel {
     private String appRootPath;
     private String scriptsPath;
     private String infoFilePath;
+    private String logFolderPath;
     private String serverIp;
     private Boolean isEmailEnabled;
     private String emailReceiver;
@@ -25,11 +26,13 @@ public class ImportantDataModel {
     }
 
     public ImportantDataModel(String appRootPath, String scriptsPath, String infoFilePath,
+                              String logFolderPath,
                               String emailReceiver, Boolean isEmailEnabled, String serverIp,
                               String emailSender) {
         this.appRootPath = appRootPath;
         this.scriptsPath = scriptsPath;
         this.infoFilePath = infoFilePath;
+        this.logFolderPath = logFolderPath;
         this.serverIp = serverIp;
         this.emailReceiver = emailReceiver;
         this.isEmailEnabled = isEmailEnabled;
@@ -103,6 +106,13 @@ public class ImportantDataModel {
         this.emailSender = emailSender;
     }
 
+    public String getLogFolderPath() {
+        return this.logFolderPath;
+    }
+    public void setLogFolderPath(String logFolderPath) {
+        this.logFolderPath = logFolderPath;
+    }
+
     @Override
     public String toString() {
         return "ImportantDataModel{" +
@@ -110,6 +120,7 @@ public class ImportantDataModel {
                 ", appRootPath='" + appRootPath + '\'' +
                 ", scriptsPath='" + scriptsPath + '\'' +
                 ", infoFilePath='" + infoFilePath + '\'' +
+                ", logFolderPath='" + logFolderPath + '\'' +
                 ", serverIp='" + serverIp + '\'' +
                 ", isEmailEnabled=" + isEmailEnabled +
                 ", emailReceiver='" + emailReceiver + '\'' +

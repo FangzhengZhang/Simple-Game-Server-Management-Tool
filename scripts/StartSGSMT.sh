@@ -19,6 +19,12 @@ CreateImportantFolderIfNotExist() {
   then
     mkdir "$InfoFileFolderPath"
   fi
+
+  # build the log folder if it does not exist
+  if [ ! -d "$SGSMT_Home/logs" ]
+  then
+    mkdir "$SGSMT_Home/logs"
+  fi
 }
 
 findTheJarFilePath() {

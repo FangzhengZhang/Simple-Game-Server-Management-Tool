@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ImportantDataService {
-    private ImportantDataRepository importantDataRepository;
+    private final ImportantDataRepository importantDataRepository;
 
     @Autowired
     public ImportantDataService(ImportantDataRepository importantDataRepository) {

@@ -2,7 +2,7 @@ package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
 
 
 import cat.frank.SimpleGameServerManagementTool.ipCheck.IPService;
-import jakarta.annotation.PostConstruct;
+import cat.frank.SimpleGameServerManagementTool.logManagement.LogManagementInfoService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,11 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 
 import cat.frank.SimpleGameServerManagementTool.utility.ApplicationShutdownManager;
+import org.springframework.stereotype.Service;
 
-@Configuration
+@Service
 public class SGSMTConfigService {
     //add logger
     private static final Logger logger = LoggerFactory.getLogger(SGSMTConfigService.class);
@@ -40,21 +40,35 @@ public class SGSMTConfigService {
     @Value("${spring.mail.username:null}")
     private String emailSender;
 
-    private ApplicationShutdownManager shutdownManager = null;
-    private IPService ipService = null;
-    private ImportantDataService importantDataService = null;
+    @Value("${sgsmt.log.path:logs}")
+    private String logFolderPath= null;
+
+    @Value("${logging.rotate.max.size.MB:10}")
+    private Long fileMaxSizeInMB = 10L;
+
+    @Value("${logging.rotate.max.history:10}")
+    private Integer fileMaxCount = 10;
+
+
+    private final ApplicationShutdownManager shutdownManager;
+    private final IPService ipService;
+    private final ImportantDataService importantDataService;
+
+    private final LogManagementInfoService logManagementInfoService;
+
     // create a function for authored code to be called from the constructor
     @Autowired
-    public void setShutdownManager(ApplicationShutdownManager shutdownManager,
+    public SGSMTConfigService(ApplicationShutdownManager shutdownManager,
                                    IPService ipService,
-                                   ImportantDataService importantDataService) {
+                                   ImportantDataService importantDataService,
+                                   LogManagementInfoService logManagementInfoService) {
         this.shutdownManager = shutdownManager;
         this.ipService = ipService;
         this.importantDataService = importantDataService;
+        this.logManagementInfoService = logManagementInfoService;
     }
 
-    @PostConstruct
-    public void initChecker(){
+    public void initLoadAndCheck(){
 
         if(appRootPath == null || appRootPath.isEmpty() ||appRootPath.equals("/")){
             logger.error("sgsmt.root.path is null or empty. Please start the application with StartInit.sh or set the Application Home.");
@@ -63,13 +77,16 @@ public class SGSMTConfigService {
         }
         scriptsPath = appRootPath + scriptsPath;
         infoFilePath = appRootPath + infoFilePath;
+        logFolderPath = appRootPath + logFolderPath;
 
         logger.info("appRootPath: " + appRootPath);
         logger.info("scriptsPath: " + scriptsPath);
         logger.info("infoFilePath: " + infoFilePath);
+        logger.info("logFolderPath: " + logFolderPath);
 
         checkIfPathExistsAndSaveThem();
         checkIfIpChanged();
+        logManagementInfoService.initLogManagementInfo(logFolderPath, fileMaxSizeInMB, fileMaxCount);
 
     }
 
@@ -103,7 +120,7 @@ public class SGSMTConfigService {
         }
 
         importantDataService.saveImportantData(
-                new ImportantDataModel(appRootPath, scriptsPath, infoFilePath,emailReceiver,
+                new ImportantDataModel(appRootPath, scriptsPath, infoFilePath, logFolderPath,emailReceiver,
                         isEmailEnabled,null, emailSender));
     }
 }

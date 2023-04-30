@@ -11,6 +11,9 @@ public class StaticVariables {
     public static final String Important_Data_Model_Table_Name = "config_data";
     public static final String Ip_Check_Job_Model_Table_Name = "ip_check_job";
 
+    // Only Record key
+    public static final Long Only_Record_Key = 0L;
+
     // Job related variables
     public static final String IP_Check_Job_Name_Key = "IP_Check_Job_Name";
     public static final String IP_Check_Job_ID_Key = "IP_Check_Job_ID_Key";
