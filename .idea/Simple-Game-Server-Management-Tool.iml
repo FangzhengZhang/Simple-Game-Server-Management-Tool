@@ -2,7 +2,12 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Simple-Game-Server-Management-Tool-Front_End/Angular/Simple-Game-Server-Management-Tool-Front/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/Simple-Game-Server-Management-Tool-Front_End/Angular/Simple-Game-Server-Management-Tool-Front/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Simple-Game-Server-Management-Tool-Front_End/Angular/Simple-Game-Server-Management-Tool-Angular/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/Simple-Game-Server-Management-Tool-Front_End/Angular/Simple-Game-Server-Management-Tool-Angular/tmp" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
