@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.logManagement;
+package cat.frank.SimpleGameServerManagementTool.backgroud_logManagement;
 
 import org.quartz.*;
 import org.slf4j.Logger;

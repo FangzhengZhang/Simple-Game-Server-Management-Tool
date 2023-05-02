@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.logManagement;
+package cat.frank.SimpleGameServerManagementTool.backgroud_logManagement;
 
 import cat.frank.SimpleGameServerManagementTool.utility.DateTimeUtilityService;
 import cat.frank.SimpleGameServerManagementTool.utility.FileScanCopyRenameZipService;
@@ -27,16 +27,10 @@ public class LogManagementJob implements Job {
     private final Logger logger = LoggerFactory.getLogger(LogManagementJob.class);
 
     private final LogManagementJobService logManagementJobService;
-    private final FileScanCopyRenameZipService fileScanCopyRenameZipService;
-    private final DateTimeUtilityService dateTimeUtilityService;
 
     @Autowired
-    public LogManagementJob(LogManagementJobService logManagementJobService,
-                            FileScanCopyRenameZipService fileScanCopyRenameZipService,
-                            DateTimeUtilityService dateTimeUtilityService) {
+    public LogManagementJob(LogManagementJobService logManagementJobService) {
         this.logManagementJobService = logManagementJobService;
-        this.fileScanCopyRenameZipService = fileScanCopyRenameZipService;
-        this.dateTimeUtilityService = dateTimeUtilityService;
     }
 
     @Override
@@ -62,7 +56,7 @@ public class LogManagementJob implements Job {
     private void doLogRotation(String logFolderPath, long logSizeLimit, int fileMaxCount) {
         List<Path> logFiles = null;
         try {
-            logFiles = fileScanCopyRenameZipService.findFilesTypeStartingWithAndSizeLagerThan(
+            logFiles = FileScanCopyRenameZipService.findFilesTypeStartingWithAndSizeLagerThan(
                     logFolderPath, Log_File_Start_Name, Log_File_Type, logSizeLimit );
         } catch (Exception e) {
             logger.error("Cannot scan folder {}, Error while doing log rotation: {}", logFolderPath,e.getMessage());
@@ -72,12 +66,12 @@ public class LogManagementJob implements Job {
             for (Path logFile : logFiles) {
                 try {
                     Path pathOfLogFolder = Paths.get(logFolderPath);
-                    fileScanCopyRenameZipService.renameZipDelete(
+                    FileScanCopyRenameZipService.renameZipDelete(
                             logFile,
                             pathOfLogFolder,
                             logFile.getFileName().toString() +"_"+
-                                    dateTimeUtilityService.getCurrentYMDHTimeString());
-                    fileScanCopyRenameZipService.deleteOldestFileIfMoreThan(
+                                    DateTimeUtilityService.getCurrentYMDHTimeString());
+                    FileScanCopyRenameZipService.deleteOldestFileIfMoreThan(
                             pathOfLogFolder,
                             Log_File_Start_Name,
                             Log_File_Zip_Type,

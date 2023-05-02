@@ -1,14 +1,11 @@
 package cat.frank.SimpleGameServerManagementTool.utility;
 
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Service
 public class DateTimeUtilityService {
 
-    public String getCurrentYMDHTimeString() {
+    public static String getCurrentYMDHTimeString() {
 
         // Get the current date and time using LocalDateTime
         LocalDateTime currentDateTime = LocalDateTime.now();

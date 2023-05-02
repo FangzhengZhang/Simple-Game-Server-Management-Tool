@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
+package cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
-package cat.frank.SimpleGameServerManagementTool.ipCheck;
+package cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck;
 
-import cat.frank.SimpleGameServerManagementTool.sgsmtConfig.ImportantDataModel;
-import cat.frank.SimpleGameServerManagementTool.sgsmtConfig.ImportantDataService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataModel;
+import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataService;
 import cat.frank.SimpleGameServerManagementTool.utility.EmailService;
 import cat.frank.SimpleGameServerManagementTool.utility.ShellScriptService;
 import cat.frank.SimpleGameServerManagementTool.utility.StaticVariables;
@@ -33,6 +33,7 @@ public class IPService {
 
         // run the shell script and get the return value
         String ip = ShellScriptService.runShellScript(ipFindScriptPath);
+
         logger.info("ip: " + ip);
 
         // check if the ip is changed, if changed save the new ip and send email to admin with the new ip

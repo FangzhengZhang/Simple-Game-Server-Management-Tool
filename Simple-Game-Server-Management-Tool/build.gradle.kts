@@ -27,7 +27,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-cache")
 	implementation ("mysql:mysql-connector-java:8.0.32")
@@ -36,6 +36,9 @@ dependencies {
 	implementation("org.apache.logging.log4j:log4j-core:2.20.0")
 	implementation ("org.springframework.boot:spring-boot-starter-mail")
 	implementation ("org.quartz-scheduler:quartz")
+	implementation ("com.google.code.gson:gson")
+//	implementation("org.project-lombok:lombok")
+//	implementation("org.projectlombok:lombok:1.18.26")
 }
 
 // tasks.withType<Test> {

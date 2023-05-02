@@ -24,7 +24,7 @@ public class FileScanCopyRenameZipService {
     private static final Logger logger = LoggerFactory.getLogger(FileScanCopyRenameZipService.class);
 
     // Scan a directory and find all files that start with a specific string
-    public List<Path> findFilesStartingWith(String directoryPath, String fileNameStartsWith) throws Exception {
+    public static List<Path> findFilesStartingWith(String directoryPath, String fileNameStartsWith) throws Exception {
         logger.info("Scanning directory: {} for files starting with: {}", directoryPath,fileNameStartsWith);
         // Get the Path object of the directory
         Path directory = Paths.get(directoryPath);
@@ -37,7 +37,7 @@ public class FileScanCopyRenameZipService {
         }
     }
 
-    public List<Path> findFilesTypeStartingWith(String directoryPath, String fileNameStartsWith, String type)
+    public static List<Path> findFilesTypeStartingWith(String directoryPath, String fileNameStartsWith, String type)
             throws Exception {
         logger.info("Scanning directory: {} for files starting with: {} and type: {}",
                 directoryPath,fileNameStartsWith,type);
@@ -53,7 +53,7 @@ public class FileScanCopyRenameZipService {
         }
     }
 
-    public List<Path> findFilesTypeStartingWithAndSizeLagerThan(String directoryPath, String fileNameStartsWith,
+    public static List<Path> findFilesTypeStartingWithAndSizeLagerThan(String directoryPath, String fileNameStartsWith,
                                                                 String type, long size) throws Exception {
         logger.info("Scanning directory: {} for files starting with: {} and type: {} and size larger than: {}",
                 directoryPath,fileNameStartsWith,type,size);
@@ -72,21 +72,21 @@ public class FileScanCopyRenameZipService {
     }
 
     // Copy a file to a new location with a new name
-    public void copyFile(Path source, Path destination, String newFileName) throws Exception {
+    public static void copyFile(Path source, Path destination, String newFileName) throws Exception {
         logger.info("Copying file: {} to: {} with new name: {}", source, destination, newFileName);
         // Copy the file to the new location with a new name
         Files.copy(source, destination.resolve(newFileName));
     }
 
     // Rename a file
-    public Path renameFile(Path source, String newFileName) throws Exception {
+    public static Path renameFile(Path source, String newFileName) throws Exception {
         logger.info("Renaming file: {} to: {}", source,newFileName);
         // Rename the file
         return Files.move(source, source.resolveSibling(newFileName));
     }
 
     // Zip a file
-    public void zipFile(Path source, Path destination, String newFileName) throws Exception {
+    public static void zipFile(Path source, Path destination, String newFileName) throws Exception {
         logger.info("Zipping file: {} to: {} with a new name: {}", source, destination, newFileName);
         // Zip the file to the new location with a new name
         // Create a FileOutputStream for the zip file
@@ -117,14 +117,14 @@ public class FileScanCopyRenameZipService {
     }
 
     // Delete a file
-    public void deleteFile(Path source) throws Exception {
+    public static void deleteFile(Path source) throws Exception {
         logger.info("Deleting file: {}", source);
         // Delete the file
         Files.delete(source);
     }
 
     // Rename a file, zip and delete the renamed file
-    public void renameZipDelete(Path source, Path destination, String newFileName) throws Exception {
+    public static void renameZipDelete(Path source, Path destination, String newFileName) throws Exception {
         logger.info("Renaming file: {} to: {} with a new name: {} and zip it", source, destination, newFileName);
         // Rename the file
         Path tempFile = renameFile(source, "tmp_"+newFileName);
@@ -136,7 +136,7 @@ public class FileScanCopyRenameZipService {
 
     // Find the files that start with a specific string and has a specific type.
     // If the file count more than given number, delete the oldest file
-    public void deleteOldestFileIfMoreThan(Path directory, String fileNameStartsWith, String type, int count)
+    public static void deleteOldestFileIfMoreThan(Path directory, String fileNameStartsWith, String type, int count)
             throws Exception {
         logger.info("Scanning directory: {} for files starting with: {} and type: {} and delete the oldest if more " +
                         "than: {}", directory,fileNameStartsWith,type,count);

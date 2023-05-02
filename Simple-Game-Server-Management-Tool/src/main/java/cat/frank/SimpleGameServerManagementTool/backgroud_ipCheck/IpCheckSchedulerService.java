@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.ipCheck;
+package cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck;
 
 import org.quartz.*;
 import org.slf4j.Logger;

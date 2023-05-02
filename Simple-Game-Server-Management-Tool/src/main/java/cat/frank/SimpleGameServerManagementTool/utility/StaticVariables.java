@@ -3,6 +3,7 @@ package cat.frank.SimpleGameServerManagementTool.utility;
 public class StaticVariables {
     // File names
     public static final String Get_IP_Script_Name= "GetIp.sh";
+    public static final String Get_System_Info_Script_Name= "GetSystemInfo.sh";
 
     // Email related
     public static final String IP_Change_Email_Subject= "Server IP Changed";

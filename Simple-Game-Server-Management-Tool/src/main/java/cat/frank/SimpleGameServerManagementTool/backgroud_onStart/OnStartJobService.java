@@ -1,8 +1,9 @@
-package cat.frank.SimpleGameServerManagementTool.onStart;
+package cat.frank.SimpleGameServerManagementTool.backgroud_onStart;
 
-import cat.frank.SimpleGameServerManagementTool.ipCheck.IpCheckSchedulerService;
-import cat.frank.SimpleGameServerManagementTool.logManagement.LogManagementSchedulerService;
-import cat.frank.SimpleGameServerManagementTool.sgsmtConfig.SGSMTConfigService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_hardwareInfo.SystemInfoService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck.IpCheckSchedulerService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_logManagement.LogManagementSchedulerService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.SGSMTConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,18 @@ public class OnStartJobService {
     private final SGSMTConfigService sgsmtConfigService;
     private final IpCheckSchedulerService ipCheckSchedulerService;
     private final LogManagementSchedulerService logManagementSchedulerService;
+    private final SystemInfoService systemInfoService;
 
 
     @Autowired
     public OnStartJobService(SGSMTConfigService sgsmtConfigService,
                              IpCheckSchedulerService ipCheckSchedulerService,
-                             LogManagementSchedulerService logManagementSchedulerService) {
+                             LogManagementSchedulerService logManagementSchedulerService,
+                             SystemInfoService systemInfoService) {
         this.sgsmtConfigService = sgsmtConfigService;
         this.ipCheckSchedulerService = ipCheckSchedulerService;
         this.logManagementSchedulerService = logManagementSchedulerService;
+        this.systemInfoService = systemInfoService;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -34,6 +38,16 @@ public class OnStartJobService {
         startInitLoadAndCheck();
         startIpCheckJob();
         startLogManagementJob();
+        initSystemInfo();
+    }
+
+    private void initSystemInfo(){
+        try {
+            systemInfoService.initSystemInfoModel();
+        }catch (Exception e){
+            logger.error("Failed to init system info! ", e);
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,8 +1,8 @@
-package cat.frank.SimpleGameServerManagementTool.sgsmtConfig;
+package cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig;
 
 
-import cat.frank.SimpleGameServerManagementTool.ipCheck.IPService;
-import cat.frank.SimpleGameServerManagementTool.logManagement.LogManagementInfoService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck.IPService;
+import cat.frank.SimpleGameServerManagementTool.backgroud_logManagement.LogManagementInfoService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
