@@ -1,6 +1,10 @@
 # Simple-Game-Server-Management-Tool
 I want to build an MC and CoreKeeper game sever management tool, so I can back up, restart, and restore the game server easily.
 
+It is more than just a game server management tool. It is a server management tool now. 
+I implement the server hardware status check, jobs configuration and management (I will implement a UI for them), a completed server log rotation, and auto-restart logic.
+And I will implement futures to let user upload executable files and customize scripts through UI. With those, use are able to run and manage any kind of application on the server.
+
 # There are few goals I want to achieve:
 - This application will send me the server IP address when it starts and when it changes. (done 0.1)
 - This application will automatically restart the server when it crashes by use a corn job. (done 0.2)
