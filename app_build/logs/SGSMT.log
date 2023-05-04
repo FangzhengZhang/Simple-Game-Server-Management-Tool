@@ -1,0 +1,125 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.4)
+
+2023-04-30T19:25:37.519-04:00  INFO 3350 --- [           main] impleGameServerManagementToolApplication : Starting SimpleGameServerManagementToolApplication v0.0.1-SNAPSHOT using Java 17.0.6 with PID 3350 (/mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/SGSMT-0.3.jar started by chip_cat in /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts)
+2023-04-30T19:25:37.531-04:00  INFO 3350 --- [           main] impleGameServerManagementToolApplication : No active profile set, falling back to 1 default profile: "default"
+2023-04-30T19:25:39.824-04:00  INFO 3350 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-30T19:25:40.011-04:00  INFO 3350 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 161 ms. Found 4 JPA repository interfaces.
+2023-04-30T19:25:41.493-04:00  INFO 3350 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-30T19:25:41.520-04:00  INFO 3350 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-30T19:25:41.521-04:00  INFO 3350 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-04-30T19:25:41.669-04:00  INFO 3350 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-30T19:25:41.671-04:00  INFO 3350 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3911 ms
+2023-04-30T19:25:42.138-04:00  INFO 3350 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-30T19:25:42.377-04:00  INFO 3350 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-04-30T19:25:43.614-04:00  INFO 3350 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-30T19:25:44.208-04:00  INFO 3350 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c974942
+2023-04-30T19:25:44.215-04:00  INFO 3350 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-30T19:25:44.418-04:00  INFO 3350 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+Hibernate: drop table if exists config_data
+Hibernate: drop table if exists config_data_seq
+Hibernate: drop table if exists ip_check_job
+Hibernate: drop table if exists ip_check_job_seq
+Hibernate: drop table if exists log_management_info_model_seq
+Hibernate: drop table if exists log_management_job_model_seq
+Hibernate: drop table if exists log_management_info_model
+Hibernate: drop table if exists log_management_job_model
+Hibernate: create table config_data (id bigint not null, app_root_path varchar(255), email_receiver varchar(255), email_sender varchar(255), info_file_path varchar(255), is_email_enabled bit, log_folder_path varchar(255), scripts_path varchar(255), server_ip varchar(255), primary key (id)) engine=InnoDB
+Hibernate: create table config_data_seq (next_val bigint) engine=InnoDB
+Hibernate: insert into config_data_seq values ( 1 )
+Hibernate: create table ip_check_job (id bigint not null, create_time datetime(6), is_running bit, job_group varchar(255), jobid bigint, job_name varchar(255), next_fire_time datetime(6), previous_fire_time datetime(6), repeat_interval_hour bigint, start_time datetime(6), primary key (id)) engine=InnoDB
+Hibernate: create table ip_check_job_seq (next_val bigint) engine=InnoDB
+Hibernate: insert into ip_check_job_seq values ( 1 )
+Hibernate: create table log_management_info_model_seq (next_val bigint) engine=InnoDB
+Hibernate: insert into log_management_info_model_seq values ( 1 )
+Hibernate: create table log_management_job_model_seq (next_val bigint) engine=InnoDB
+Hibernate: insert into log_management_job_model_seq values ( 1 )
+Hibernate: create table log_management_info_model (id bigint not null, file_max_count integer, file_max_size_inmb bigint, log_file_path varchar(255), primary key (id)) engine=InnoDB
+Hibernate: create table log_management_job_model (id bigint not null, create_time datetime(6), is_running bit, job_group varchar(255), jobid bigint, job_name varchar(255), next_fire_time datetime(6), previous_fire_time datetime(6), repeat_interval_hour bigint, start_time datetime(6), primary key (id)) engine=InnoDB
+2023-04-30T19:25:47.565-04:00  INFO 3350 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-30T19:25:47.605-04:00  INFO 3350 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-30T19:25:48.692-04:00  INFO 3350 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2023-04-30T19:25:48.731-04:00  INFO 3350 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2023-04-30T19:25:48.731-04:00  INFO 3350 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2023-04-30T19:25:48.733-04:00  INFO 3350 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2023-04-30T19:25:48.734-04:00  INFO 3350 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2023-04-30T19:25:48.735-04:00  INFO 3350 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2023-04-30T19:25:48.735-04:00  INFO 3350 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2023-04-30T19:25:48.735-04:00  INFO 3350 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7d57dbb5
+2023-04-30T19:25:48.854-04:00  WARN 3350 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-30T19:25:49.103-04:00 DEBUG 3350 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-04-30T19:25:49.341-04:00 DEBUG 3350 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2023-04-30T19:25:49.388-04:00 DEBUG 3350 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-04-30T19:25:49.401-04:00 DEBUG 3350 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-04-30T19:25:49.628-04:00  INFO 3350 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-30T19:25:49.631-04:00  INFO 3350 --- [           main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2023-04-30T19:25:49.631-04:00  INFO 3350 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2023-04-30T19:25:49.645-04:00  INFO 3350 --- [           main] impleGameServerManagementToolApplication : Started SimpleGameServerManagementToolApplication in 13.544 seconds (process running for 14.872)
+2023-04-30T19:25:49.651-04:00  INFO 3350 --- [           main] c.f.S.sgsmtConfig.SGSMTConfigService     : appRootPath: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//
+2023-04-30T19:25:49.651-04:00  INFO 3350 --- [           main] c.f.S.sgsmtConfig.SGSMTConfigService     : scriptsPath: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//scripts/
+2023-04-30T19:25:49.651-04:00  INFO 3350 --- [           main] c.f.S.sgsmtConfig.SGSMTConfigService     : infoFilePath: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//informationFile/
+2023-04-30T19:25:49.652-04:00  INFO 3350 --- [           main] c.f.S.sgsmtConfig.SGSMTConfigService     : logFolderPath: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//logs/
+Hibernate: select next_val as id_val from config_data_seq for update
+Hibernate: update config_data_seq set next_val= ? where next_val=?
+Hibernate: insert into config_data (app_root_path, email_receiver, email_sender, info_file_path, is_email_enabled, log_folder_path, scripts_path, server_ip, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select i1_0.id,i1_0.app_root_path,i1_0.email_receiver,i1_0.email_sender,i1_0.info_file_path,i1_0.is_email_enabled,i1_0.log_folder_path,i1_0.scripts_path,i1_0.server_ip from config_data i1_0 where i1_0.id=?
+2023-04-30T19:25:49.987-04:00  INFO 3350 --- [           main] c.f.S.utility.ShellScriptService         : Running script: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//scripts/GetIp.sh
+2023-04-30T19:25:50.075-04:00  INFO 3350 --- [           main] c.f.S.utility.ShellScriptService         : Script execution completed with exit code: 0
+2023-04-30T19:25:50.075-04:00  INFO 3350 --- [           main] c.f.S.utility.ShellScriptService         : Script output: 
+74.96.8.201
+
+2023-04-30T19:25:50.076-04:00  INFO 3350 --- [           main] c.f.S.ipCheck.IPService                  : ip: 74.96.8.201
+
+2023-04-30T19:25:50.076-04:00  WARN 3350 --- [           main] c.f.S.ipCheck.IPService                  : ip changed from null to 74.96.8.201
+
+Hibernate: select i1_0.id,i1_0.app_root_path,i1_0.email_receiver,i1_0.email_sender,i1_0.info_file_path,i1_0.is_email_enabled,i1_0.log_folder_path,i1_0.scripts_path,i1_0.server_ip from config_data i1_0 where i1_0.id=?
+Hibernate: update config_data set app_root_path=?, email_receiver=?, email_sender=?, info_file_path=?, is_email_enabled=?, log_folder_path=?, scripts_path=?, server_ip=? where id=?
+Hibernate: select l1_0.id,l1_0.file_max_count,l1_0.file_max_size_inmb,l1_0.log_file_path from log_management_info_model l1_0
+Hibernate: select l1_0.id,l1_0.file_max_count,l1_0.file_max_size_inmb,l1_0.log_file_path from log_management_info_model l1_0 where l1_0.id=?
+Hibernate: select next_val as id_val from log_management_info_model_seq for update
+Hibernate: update log_management_info_model_seq set next_val= ? where next_val=?
+Hibernate: insert into log_management_info_model (file_max_count, file_max_size_inmb, log_file_path, id) values (?, ?, ?, ?)
+2023-04-30T19:25:50.251-04:00  INFO 3350 --- [           main] c.f.S.ipCheck.IpCheckSchedulerService    : Creating IP check job with JobKey name: IP_Check_Job, and JobKey group name: IP_Check_Job_Group ...
+Hibernate: select next_val as id_val from ip_check_job_seq for update
+Hibernate: update ip_check_job_seq set next_val= ? where next_val=?
+Hibernate: insert into ip_check_job (create_time, is_running, job_group, jobid, job_name, next_fire_time, previous_fire_time, repeat_interval_hour, start_time, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-04-30T19:25:50.283-04:00  INFO 3350 --- [           main] c.f.S.ipCheck.IpCheckSchedulerService    : Scheduling the IP check job ...
+Hibernate: select i1_0.id,i1_0.create_time,i1_0.is_running,i1_0.job_group,i1_0.jobid,i1_0.job_name,i1_0.next_fire_time,i1_0.previous_fire_time,i1_0.repeat_interval_hour,i1_0.start_time from ip_check_job i1_0 where i1_0.job_name=? and i1_0.job_group=?
+Hibernate: select i1_0.id,i1_0.create_time,i1_0.is_running,i1_0.job_group,i1_0.jobid,i1_0.job_name,i1_0.next_fire_time,i1_0.previous_fire_time,i1_0.repeat_interval_hour,i1_0.start_time from ip_check_job i1_0 where i1_0.id=?
+Hibernate: update ip_check_job set create_time=?, is_running=?, job_group=?, jobid=?, job_name=?, next_fire_time=?, previous_fire_time=?, repeat_interval_hour=?, start_time=? where id=?
+2023-04-30T19:25:50.371-04:00  INFO 3350 --- [           main] c.f.S.l.LogManagementSchedulerService    : Creating log management job with JobKey name: Log_Management_Job, and JobKey group name: Log_Management_Job_Group ...
+Hibernate: select l1_0.id,l1_0.file_max_count,l1_0.file_max_size_inmb,l1_0.log_file_path from log_management_info_model l1_0 where l1_0.id=?
+Hibernate: select next_val as id_val from log_management_job_model_seq for update
+Hibernate: update log_management_job_model_seq set next_val= ? where next_val=?
+2023-04-30T19:25:50.380-04:00  INFO 3350 --- [eduler_Worker-1] c.f.S.ipCheck.IpCheckJob                 : Job: IP_Check_Job with ID: 0 is running ...
+2023-04-30T19:25:50.382-04:00  INFO 3350 --- [eduler_Worker-1] c.f.S.utility.ShellScriptService         : Running script: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//scripts/GetIp.sh
+Hibernate: insert into log_management_job_model (create_time, is_running, job_group, jobid, job_name, next_fire_time, previous_fire_time, repeat_interval_hour, start_time, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-04-30T19:25:50.393-04:00  INFO 3350 --- [           main] c.f.S.l.LogManagementSchedulerService    : Scheduling the Log Management job ...
+Hibernate: select l1_0.id,l1_0.create_time,l1_0.is_running,l1_0.job_group,l1_0.jobid,l1_0.job_name,l1_0.next_fire_time,l1_0.previous_fire_time,l1_0.repeat_interval_hour,l1_0.start_time from log_management_job_model l1_0 where l1_0.job_name=? and l1_0.job_group=?
+Hibernate: select l1_0.id,l1_0.create_time,l1_0.is_running,l1_0.job_group,l1_0.jobid,l1_0.job_name,l1_0.next_fire_time,l1_0.previous_fire_time,l1_0.repeat_interval_hour,l1_0.start_time from log_management_job_model l1_0 where l1_0.id=?
+2023-04-30T19:25:50.399-04:00  INFO 3350 --- [eduler_Worker-2] c.f.S.logManagement.LogManagementJob     : Job: Log_Management_Job with ID: 0 is running ...
+Hibernate: update log_management_job_model set create_time=?, is_running=?, job_group=?, jobid=?, job_name=?, next_fire_time=?, previous_fire_time=?, repeat_interval_hour=?, start_time=? where id=?
+Hibernate: select l1_0.id,l1_0.create_time,l1_0.is_running,l1_0.job_group,l1_0.jobid,l1_0.job_name,l1_0.next_fire_time,l1_0.previous_fire_time,l1_0.repeat_interval_hour,l1_0.start_time from log_management_job_model l1_0 where l1_0.jobid=?
+2023-04-30T19:25:50.405-04:00  INFO 3350 --- [eduler_Worker-2] c.f.S.u.FileScanCopyRenameZipService     : Scanning directory: /mnt/d/Code/Simple-Game-Server-Management-Tool/app_build/scripts/..//logs/ for files starting with: SGSMT and type: log and size larger than: 10485760
+2023-04-30T19:25:50.419-04:00  INFO 3350 --- [eduler_Worker-1] c.f.S.utility.ShellScriptService         : Script execution completed with exit code: 0
+2023-04-30T19:25:50.419-04:00  INFO 3350 --- [eduler_Worker-1] c.f.S.utility.ShellScriptService         : Script output: 
+74.96.8.201
+
+2023-04-30T19:25:50.419-04:00  INFO 3350 --- [eduler_Worker-1] c.f.S.ipCheck.IPService                  : ip: 74.96.8.201
+
+Hibernate: select i1_0.id,i1_0.create_time,i1_0.is_running,i1_0.job_group,i1_0.jobid,i1_0.job_name,i1_0.next_fire_time,i1_0.previous_fire_time,i1_0.repeat_interval_hour,i1_0.start_time from ip_check_job i1_0 where i1_0.jobid=?
+Hibernate: select i1_0.id,i1_0.create_time,i1_0.is_running,i1_0.job_group,i1_0.jobid,i1_0.job_name,i1_0.next_fire_time,i1_0.previous_fire_time,i1_0.repeat_interval_hour,i1_0.start_time from ip_check_job i1_0 where i1_0.id=?
+Hibernate: update ip_check_job set create_time=?, is_running=?, job_group=?, jobid=?, job_name=?, next_fire_time=?, previous_fire_time=?, repeat_interval_hour=?, start_time=? where id=?

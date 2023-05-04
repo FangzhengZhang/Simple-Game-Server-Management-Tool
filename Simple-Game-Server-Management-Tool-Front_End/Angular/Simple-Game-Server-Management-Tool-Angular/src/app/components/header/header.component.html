@@ -1,3 +1,16 @@
-<header>
-    <app-header-button color="red" text="Click Me" (clickHeaderBtn)="onHeaderBtnClick()"></app-header-button>
-</header>
+<div>
+    <mat-toolbar class="header-tool-bar" color="primary">
+        <span class="icon-text">SGSMT</span>
+        <div class="spacer"></div>
+        <div class="header-btn">
+            <a mat-button class="header-button" routerLink="/home">Home</a>
+            <a mat-button class="header-button" routerLink="/buckupJobs">Backup Process</a>
+            <a mat-button class="header-button" routerLink="/jobPage">Jobs</a>
+            <a mat-button class="header-button" routerLink="/systemInfo">System Info</a>
+            <a mat-button class="header-button" routerLink="/user">User</a>
+        </div>
+        
+
+    </mat-toolbar>
+
+</div>

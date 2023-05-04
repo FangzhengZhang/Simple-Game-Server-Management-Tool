@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Simple-Game-Server-Management-Tool.iml" filepath="$PROJECT_DIR$/.idea/Simple-Game-Server-Management-Tool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cat.frank.Simple-Game-Server-Management-Tool.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cat.frank.Simple-Game-Server-Management-Tool.main.iml" />
     </modules>
   </component>
 </project>
