@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck;
+package cat.frank.SimpleGameServerManagementTool.background_ipCheck;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;

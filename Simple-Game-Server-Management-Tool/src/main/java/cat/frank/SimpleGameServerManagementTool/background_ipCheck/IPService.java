@@ -1,7 +1,7 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck;
+package cat.frank.SimpleGameServerManagementTool.background_ipCheck;
 
-import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataModel;
-import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataService;
+import cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig.ImportantDataModel;
+import cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig.ImportantDataService;
 import cat.frank.SimpleGameServerManagementTool.utility.EmailService;
 import cat.frank.SimpleGameServerManagementTool.utility.ShellScriptService;
 import cat.frank.SimpleGameServerManagementTool.utility.StaticVariables;

@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_hardwareInfo;
+package cat.frank.SimpleGameServerManagementTool.background_hardwareInfo;
 
 import jakarta.persistence.*;
 

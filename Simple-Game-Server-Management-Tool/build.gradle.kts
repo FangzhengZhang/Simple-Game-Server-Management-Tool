@@ -37,7 +37,6 @@ dependencies {
 	implementation ("org.springframework.boot:spring-boot-starter-mail")
 	implementation ("org.quartz-scheduler:quartz")
 	implementation ("com.google.code.gson:gson")
-//	implementation("org.project-lombok:lombok")
 //	implementation("org.projectlombok:lombok:1.18.26")
 }
 

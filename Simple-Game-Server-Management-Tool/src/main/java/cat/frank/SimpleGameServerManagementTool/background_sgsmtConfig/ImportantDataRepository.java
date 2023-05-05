@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig;
+package cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

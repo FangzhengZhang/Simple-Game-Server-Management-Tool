@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_logManagement;
+package cat.frank.SimpleGameServerManagementTool.background_logManagement;
 
 import jakarta.persistence.*;
 

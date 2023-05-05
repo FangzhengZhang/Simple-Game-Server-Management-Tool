@@ -16,8 +16,6 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-import static cat.frank.SimpleGameServerManagementTool.utility.StaticVariables.Log_File_Zip_Type;
-
 @Service
 public class FileScanCopyRenameZipService {
     // Logger of this class
@@ -129,7 +127,7 @@ public class FileScanCopyRenameZipService {
         // Rename the file
         Path tempFile = renameFile(source, "tmp_"+newFileName);
         // Zip the file
-        zipFile(tempFile, destination, newFileName + "."+Log_File_Zip_Type);
+        zipFile(tempFile, destination, newFileName + "."+ StaticVariables.Log_File_Zip_Type);
         // Delete the renamed file
         deleteFile(tempFile);
     }

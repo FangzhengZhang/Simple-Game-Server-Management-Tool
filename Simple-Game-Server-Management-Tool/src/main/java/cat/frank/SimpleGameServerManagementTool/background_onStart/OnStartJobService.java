@@ -1,9 +1,9 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_onStart;
+package cat.frank.SimpleGameServerManagementTool.background_onStart;
 
-import cat.frank.SimpleGameServerManagementTool.backgroud_hardwareInfo.SystemInfoService;
-import cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck.IpCheckSchedulerService;
-import cat.frank.SimpleGameServerManagementTool.backgroud_logManagement.LogManagementSchedulerService;
-import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.SGSMTConfigService;
+import cat.frank.SimpleGameServerManagementTool.background_hardwareInfo.SystemInfoService;
+import cat.frank.SimpleGameServerManagementTool.background_ipCheck.IpCheckSchedulerService;
+import cat.frank.SimpleGameServerManagementTool.background_logManagement.LogManagementSchedulerService;
+import cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig.SGSMTConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
