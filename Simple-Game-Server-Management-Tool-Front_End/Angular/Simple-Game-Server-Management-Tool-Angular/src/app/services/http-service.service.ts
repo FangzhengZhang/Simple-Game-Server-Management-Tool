@@ -1,36 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { BaseUrl } from '../utils/static-variables';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SGSMT_API_URL } from '../utils/static-variables';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpServiceService {
 
-  constructor(private http:HttpClient) { }
+  constructor( private httpClient : HttpClient) { }
 
-  private httpOptions = {
+  httpOptions = {
     headers: new HttpHeaders({
-    'Content-Type' : 'application/json'
+      'Content-Type': 'application/json'
     })
   }
-  
 
-  httpGet(requestPath: string): Observable<any> {
-    return this.http.get(BaseUrl + requestPath, this.httpOptions);
+  get(url: string): Observable<any> {
+    return this.httpClient.get(SGSMT_API_URL + url);
   }
 
-  httpPost(requestPath: string, body: any): Observable<any> {
-    return this.http.post(BaseUrl + requestPath, body, this.httpOptions);
+  post(url: string, data: any): Observable<any> {
+    return this.httpClient.post(SGSMT_API_URL + url, data, this.httpOptions);
   }
 
-  httpPut(requestPath: string, body: any): Observable<any> {
-    return this.http.put(BaseUrl + requestPath, body, this.httpOptions);
+  put(url: string, data: any): Observable<any> {
+    return this.httpClient.put(SGSMT_API_URL + url, data, this.httpOptions);
   }
 
-  httpDelete(requestPath: string): Observable<any> {
-    return this.http.delete(BaseUrl + requestPath, this.httpOptions);
+  delete(url: string): Observable<any> {
+    return this.httpClient.delete(SGSMT_API_URL + url, this.httpOptions);
   }
+
 
 }

@@ -1,7 +1,7 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_hardwareInfo;
+package cat.frank.SimpleGameServerManagementTool.background_hardwareInfo;
 
-import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataModel;
-import cat.frank.SimpleGameServerManagementTool.backgroud_sgsmtConfig.ImportantDataService;
+import cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig.ImportantDataModel;
+import cat.frank.SimpleGameServerManagementTool.background_sgsmtConfig.ImportantDataService;
 import cat.frank.SimpleGameServerManagementTool.utility.ShellScriptService;
 import com.google.gson.Gson;
 import org.slf4j.Logger;

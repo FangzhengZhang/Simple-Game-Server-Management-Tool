@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_logManagement;
+package cat.frank.SimpleGameServerManagementTool.background_logManagement;
 
 import cat.frank.SimpleGameServerManagementTool.utility.DateTimeUtilityService;
 import cat.frank.SimpleGameServerManagementTool.utility.FileScanCopyRenameZipService;

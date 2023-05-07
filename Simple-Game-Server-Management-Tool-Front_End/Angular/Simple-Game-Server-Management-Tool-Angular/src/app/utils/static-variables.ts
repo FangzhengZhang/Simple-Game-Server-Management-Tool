@@ -1,5 +1,3 @@
-export const BaseUrl = 'http://localhost:8080';
-export const HomeUrlPath = '/home/';
-export const BackupJobUrlPath = '/buckupJobs/';
-export const JobsUrlPath = '/jobPage/';
-export const JystemInfoUrlPath = '/systemInfo/';
+export const SGSMT_API_URL = 'http://localhost:8080/api/v0/SGSMT';
+export const SGSMT_SYS_INFO_BASE_URL = '/systemInfo';
+export const GET_SYS_INFO_URL_PATH = SGSMT_SYS_INFO_BASE_URL + '/getSystemInfo';

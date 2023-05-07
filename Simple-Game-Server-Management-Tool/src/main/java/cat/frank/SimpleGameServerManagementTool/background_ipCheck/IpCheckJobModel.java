@@ -1,11 +1,14 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_logManagement;
+package cat.frank.SimpleGameServerManagementTool.background_ipCheck;
 
 import jakarta.persistence.*;
 
 import java.util.Date;
 
+import static cat.frank.SimpleGameServerManagementTool.utility.StaticVariables.Ip_Check_Job_Model_Table_Name;
+
 @Entity
-public class LogManagementJobModel {
+@Table(name = Ip_Check_Job_Model_Table_Name)
+public class IpCheckJobModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
@@ -20,31 +23,26 @@ public class LogManagementJobModel {
     private Date createTime;
     private Date startTime;
 
-    public LogManagementJobModel(String jobName, Long jobID, String jobGroup, Boolean isRunning, Date previousFireTime,
-                                 Long repeatIntervalHour, Date nextFireTime, Date createTime, Date startTime) {
+    public IpCheckJobModel(String jobName, String jobGroupName, Long jobID, Long repeatIntervalHour) {
         this.jobName = jobName;
+        this.jobGroup = jobGroupName;
         this.jobID = jobID;
-        this.jobGroup = jobGroup;
-        this.isRunning = isRunning;
-        this.previousFireTime = previousFireTime;
         this.repeatIntervalHour = repeatIntervalHour;
-        this.nextFireTime = nextFireTime;
-        this.createTime = createTime;
-        this.startTime = startTime;
+        isRunning = false;
+        Date currDate = new Date();
+        createTime = currDate;
     }
 
-    public LogManagementJobModel(String jobName, String jobGroup, Long jobID, Long repeatIntervalHour) {
-        this.jobName = jobName;
-        this.jobID = jobID;
-        this.jobGroup = jobGroup;
-        this.isRunning = false;
-        this.previousFireTime = null;
-        this.repeatIntervalHour = repeatIntervalHour;
-        this.createTime = new Date();
+    public IpCheckJobModel() {
+
     }
 
-    public LogManagementJobModel() {
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getJobName() {
@@ -117,13 +115,5 @@ public class LogManagementJobModel {
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

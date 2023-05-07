@@ -1,4 +1,4 @@
-package cat.frank.SimpleGameServerManagementTool.backgroud_ipCheck;
+package cat.frank.SimpleGameServerManagementTool.background_ipCheck;
 
 import cat.frank.SimpleGameServerManagementTool.utility.StaticVariables;
 import org.quartz.*;
