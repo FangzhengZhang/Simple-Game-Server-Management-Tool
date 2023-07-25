@@ -24,6 +24,11 @@ And I will implement futures to let user upload executable files and customize s
   - curl check
   - MySQL server check
 
+- After UI done, Allowed user to add email information from UI 
+- After UI done, Allowed user to add DNS information from UI
+  - Need to find a library to do this.
+  - Need to understand how to do it.
+
 # Starting idea:
 This project should have the following components"
 1. A page to let user check the status of the game server (in boxed review).
