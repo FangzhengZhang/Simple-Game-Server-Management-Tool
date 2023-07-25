@@ -18,7 +18,7 @@ And I will implement futures to let user upload executable files and customize s
 - I can start, stop, and restart the game server. 
 
 ## TODO list:
-- [x] Add requirement check and install script.
+- [DONE] Add requirement check and install script.
   - Internet check
   - Java check
   - curl check
