@@ -17,6 +17,13 @@ And I will implement futures to let user upload executable files and customize s
 - I can update the server with command or upload file.
 - I can start, stop, and restart the game server. 
 
+## TODO list:
+- [x] Add requirement check and install script.
+  - Internet check
+  - Java check
+  - curl check
+  - MySQL server check
+
 # Starting idea:
 This project should have the following components"
 1. A page to let user check the status of the game server (in boxed review).
@@ -57,5 +64,6 @@ This project should have the following components"
 4. It will check the server IP every hour.
 5. It will rotate the server log every day if its size is too big.
 6. It will check the server hardware usage and display in UI. 
+
 
 

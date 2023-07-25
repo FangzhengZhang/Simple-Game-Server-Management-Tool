@@ -1,17 +1,5 @@
 #!/bin/bash
 
-CheckIfSystemSatisfyAllRequirements() {
-  # Check if the system satisfy all requirements by running the CheckSystemEnv.sh with no exit 1
-  echo "Check if the system satisfy all requirements by no exit with 1"
-  "$ScriptFolderPath"/CheckSystemEnv.sh
-  exit_status=$?
-  if [ $exit_status -eq 1 ]
-  then
-    echo "The system does not satisfy all requirements, please check the error message above"
-    exit 1
-  fi
-}
-
 StartingCheck() {
   # Check if the application is already running, if so, do nothing
   echo "Check if the app is already running with command ps -ef | grep $jarFile | grep -v grep"
@@ -140,7 +128,6 @@ else
 fi
 
 
-CheckIfSystemSatisfyAllRequirements
 findTheJarFilePath
 StartingCheck
 CreateImportantFolderIfNotExist
