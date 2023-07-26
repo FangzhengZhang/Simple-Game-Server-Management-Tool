@@ -30,7 +30,7 @@ And I will implement futures to let user upload executable files and customize s
   - Need to understand how to do it.
 
 # Starting idea:
-This project should have the following components"
+This project should have the following components
 1. A page to let user check the status of the game server (in boxed review).
    - This UI should have a home page to **display the current running server** in a box looking UI.
      - This box can show users the status of the server (online / offline)

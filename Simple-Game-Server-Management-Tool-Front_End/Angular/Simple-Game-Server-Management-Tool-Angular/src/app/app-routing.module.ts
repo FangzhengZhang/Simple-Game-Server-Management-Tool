@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BackupJobComponent } from './components/backup-job/backup-job.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { SysInfoComponent } from './components/sys-info/sys-info.component';
+import {AppConfigPageComponent} from "./components/app-config-page/app-config-page.component";
+
 
 
 const routes: Routes = [
@@ -16,7 +18,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-      path: 'buckupJobs',
+      path: 'backupJobs',
       component: BackupJobComponent
   },
   {
@@ -26,7 +28,12 @@ const routes: Routes = [
   {
     path: 'systemInfo',
     component: SysInfoComponent
+  },
+  {
+    path: 'appConfig',
+    component: AppConfigPageComponent
   }
+
 
 
 

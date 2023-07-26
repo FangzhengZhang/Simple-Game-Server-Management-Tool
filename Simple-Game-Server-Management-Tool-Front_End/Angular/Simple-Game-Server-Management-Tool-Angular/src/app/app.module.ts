@@ -16,6 +16,7 @@ import { SysInfoComponent } from './components/sys-info/sys-info.component';
 import { HomeComponent } from './components/home/home.component';
 import { BackupJobComponent } from './components/backup-job/backup-job.component';
 import { JobsComponent } from './components/jobs/jobs.component';
+import { AppConfigPageComponent } from './components/app-config-page/app-config-page.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { JobsComponent } from './components/jobs/jobs.component';
     HomeComponent,
     BackupJobComponent,
     JobsComponent,
+    AppConfigPageComponent,
   ],
   imports: [
     BrowserModule,
