@@ -35,6 +35,8 @@ public class OnStartJobService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void onStart() {
+        logger.info("Application is ready to start!");
+        checkIfAppIsFirstStart();
         startInitLoadAndCheck();
         startIpCheckJob();
         startLogManagementJob();
@@ -78,5 +80,13 @@ public class OnStartJobService {
         }
     }
 
+    private void checkIfAppIsFirstStart(){
+        try{
+            sgsmtConfigService.checkIfAppIsFirstStart();
+        }catch (Exception e){
+            logger.error("Failed to check if application is first start! ", e);
+            e.printStackTrace();
+        }
+    }
 
 }

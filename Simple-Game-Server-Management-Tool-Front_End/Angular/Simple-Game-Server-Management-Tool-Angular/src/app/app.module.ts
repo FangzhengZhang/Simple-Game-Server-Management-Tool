@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { BackupJobComponent } from './components/backup-job/backup-job.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { AppConfigPageComponent } from './components/app-config-page/app-config-page.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {NgFor} from "@angular/common";
 
 
 @NgModule({
@@ -24,7 +26,6 @@ import { AppConfigPageComponent } from './components/app-config-page/app-config-
     AppComponent,
     HeaderComponent,
     SysInfoComponent,
-    HomeComponent,
     BackupJobComponent,
     JobsComponent,
     AppConfigPageComponent,
@@ -39,7 +40,9 @@ import { AppConfigPageComponent } from './components/app-config-page/app-config-
     MatToolbarModule,
     MatTabsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    NgFor
   ],
   providers: [],
   bootstrap: [AppComponent]

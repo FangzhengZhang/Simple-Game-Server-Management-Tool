@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="main-page-container">
+  <div class="home-message-container">
+    <mat-card class="head-message-card"  *ngFor="let msg of homeMessages">
+      <mat-card-content >{{msg.message}}</mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="major-container">
+    <div class="left-container">
+      <p>This is the left div.</p>
+      <mat-card>
+        <mat-card-content class="head-message-box">This is the left div.</mat-card-content>
+      </mat-card>
+    </div>
+    <div class="right-container">
+      <p>This is the right div.</p>
+      <mat-card>
+        <mat-card-content class="head-message-box">This is the right div.</mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+</div>
+

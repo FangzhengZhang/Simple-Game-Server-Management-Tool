@@ -53,19 +53,31 @@ public class SGSMTConfigService {
     private final ApplicationShutdownManager shutdownManager;
     private final IPService ipService;
     private final ImportantDataService importantDataService;
-
     private final LogManagementInfoService logManagementInfoService;
+    private final DBFirstStartInitService dbFirstStartInitService;
+
 
     // create a function for authored code to be called from the constructor
     @Autowired
     public SGSMTConfigService(ApplicationShutdownManager shutdownManager,
-                                   IPService ipService,
-                                   ImportantDataService importantDataService,
-                                   LogManagementInfoService logManagementInfoService) {
+                              IPService ipService,
+                              ImportantDataService importantDataService,
+                              LogManagementInfoService logManagementInfoService,
+                              DBFirstStartInitService dbFirstStartInitService) {
         this.shutdownManager = shutdownManager;
         this.ipService = ipService;
         this.importantDataService = importantDataService;
         this.logManagementInfoService = logManagementInfoService;
+        this.dbFirstStartInitService = dbFirstStartInitService;
+    }
+
+    public void checkIfAppIsFirstStart(){
+        if(importantDataService.getTotalNumRecords() == 0){
+            logger.info("Application is starting for the first time.");
+//            logger.info("Creating important data.");
+//            importantDataService.saveImportantData(new ImportantDataModel());
+            dbFirstStartInitService.initDB();
+        }
     }
 
     public void initLoadAndCheck(){
@@ -123,4 +135,5 @@ public class SGSMTConfigService {
                 new ImportantDataModel(appRootPath, scriptsPath, infoFilePath, logFolderPath,emailReceiver,
                         isEmailEnabled,null, emailSender));
     }
+
 }

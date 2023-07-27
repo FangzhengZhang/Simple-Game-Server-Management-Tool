@@ -18,6 +18,10 @@ public class ImportantDataService {
         this.importantDataRepository = importantDataRepository;
     }
 
+    public Long getTotalNumRecords() {
+        return importantDataRepository.count();
+    }
+
     @Cacheable("ImportantDataModel")
     public ImportantDataModel getImportantData() {
         return importantDataRepository.findById(ImportantDataRepository.onlyId).get();

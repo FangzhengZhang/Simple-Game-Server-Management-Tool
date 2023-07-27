@@ -1,0 +1,27 @@
+.head-message-card{
+  background-color: #f5f5f5;
+  padding-left: 1em;
+  border-style: hidden;
+  border-width: medium;
+  margin-bottom: 0.3em;
+}
+
+.major-container{
+  display: flex;
+  flex-direction: row;
+  padding-top: 2em;
+  height: 100%;
+  width: 100%;
+}
+
+.left-container {
+  flex: 2;
+  background-color: burlywood;
+  width: 100%;
+}
+
+.right-container {
+  flex: 1;
+  background-color: aqua;
+  width: 100%;
+}
