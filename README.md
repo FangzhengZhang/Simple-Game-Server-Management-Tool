@@ -24,8 +24,13 @@ And I will implement futures to let user upload executable files and customize s
   - curl check
   - MySQL server check
 
-- After UI done, Allowed user to add email information from UI 
+- After UI done, Allowed user to add email information from UI
+  - The sender email information
+  - The receiver list
+ 
 - After UI done, Allowed user to add DNS information from UI
+  - Let user to give to decidition turn on this feature or not, because I cannot ensure the security issue. Plus the admin can set the email to send the IP.
+  - Admin will give the API url, and the APP will inject the IP, then run it for test and when IP change.
   - Need to find a library to do this.
   - Need to understand how to do it.
 
