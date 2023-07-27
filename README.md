@@ -24,8 +24,19 @@ And I will implement futures to let user upload executable files and customize s
   - curl check
   - MySQL server check
 
-- After UI done, Allowed user to add email information from UI 
+- After UI done, Allowed user to add email information from UI
+  - The sender email information
+  - The receiver list
+ 
+- The core part of the APP:
+  - Allowed user to create a card (game profile). This action will create a folder in the system.
+  - In this profile, show user a file system view. It allow user to uploard files or a zipped file to the folder. It also allowed user use command to download the runable.
+  - User can input the starting command and excutable file name so the APP can keep an eye on it process.
+  - User able to edit the game file in the system view.   
+ 
 - After UI done, Allowed user to add DNS information from UI
+  - Let user to give to decidition turn on this feature or not, because I cannot ensure the security issue. Plus the admin can set the email to send the IP.
+  - Admin will give the API url, and the APP will inject the IP, then run it for test and when IP change.
   - Need to find a library to do this.
   - Need to understand how to do it.
 
